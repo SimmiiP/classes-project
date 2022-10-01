@@ -1,10 +1,36 @@
 package ie.setu.classes
 
+private val persons = ArrayList<Person>()
 fun main(args: Array<String>) {
 
+    persons.add(Person("Mark", "Roche"))
+    persons.add(Person("John", "Walsh"))
+    persons.add(Person("Sheila", "Flynn"))
+
+    println("\nFiltering first name as John:\n")
+    persons
+        .filter {it.firstName.contains("John")}
+        .forEach  {println(it)}
+
+    println("\nSorting by last name:")
+    persons
+        .sortedBy {it.lastName}
+        .forEach { println(it) }
+
+    println("\nSorting by last name, last name uppercased:")
+    persons
+        .sortedBy {it.lastName}
+        .forEach { println("Person: ${it.firstName}, ${it.lastName.uppercase()}")}
+}
+
+fun personInfo(){
     val person1 = Person("Mark", "Roche")
     val person2 = person1.copy(firstName = "Clare")
     val person3 = person1.copy()
+
+    println(person1)
+    println(person2.toString())
+
     println("person1 hashcode = ${person1.hashCode()}")
     println("person2 hashcode = ${person2.hashCode()}")
     println("person3 hashcode = ${person3.hashCode()}")
